@@ -245,18 +245,22 @@
         var from = G('iFrom').value.trim() || 'Someone';
         var to = G('iTo').value.trim() || 'Friend';
         var wish = G('iWish').value.trim();
-        /* populate */
+
+        /* populate data */
         G('ovTitle').textContent = 'Happy Birthday, ' + to + '! 🎉';
         G('cTo').textContent = 'Dear ' + to;
         G('cMsg').textContent = wish;
         G('cFrom').textContent = '— ' + from + ' 💗';
-        /* reset */
+
+        /* RESET ស្ថានភាពដើម */
         opened = false;
         G('wrapper').classList.remove('open');
+
         var card = G('card');
-        card.style.transition = 'none';
-        card.style.transform = 'translate(-50%,0)';
-        card.style.opacity = '0';
+        card.classList.remove('show'); // ដក Class បង្ហាញចេញ ដើម្បីឱ្យវាទៅសម្ងំក្នុងស្រោមវិញ
+        card.style.opacity = "";      // លុប inline style ចាស់ៗចេញឱ្យអស់
+        card.style.transform = "";    // លុប inline style ចាស់ៗចេញឱ្យអស់
+
         G('ovTitle').classList.remove('gone');
         G('hint').style.opacity = '1';
         G('overlay').classList.add('on');
@@ -264,27 +268,21 @@
 
       G('btnClose').onclick = function () { G('overlay').classList.remove('on') };
 
-      /* Stage click: open lids → shoot card up → settle on envelope */
+      /* Stage click: បើកស្រោមសំបុត្រ → រុញ Card ឡើង → ទម្លាក់ចុះលើស្រោមវិញ */
       G('stage').addEventListener('click', function () {
-
         if (opened) return;
         opened = true;
 
-        var wr = G('wrapper');
-        var card = G('card');
-
-        // បើក lid
-        wr.classList.add('open');
+        G('wrapper').classList.add('open');
         G('ovTitle').classList.add('gone');
         G('hint').style.opacity = '0';
 
-        // 1️⃣ card លេចឡើង
+        // ឱ្យ Card ហោះឡើងក្រោយស្រោមសំបុត្របើកបាន ០.៥ វិនាទី
         setTimeout(function () {
-          card.style.opacity = '1';
-          card.style.transition = 'bottom .38s cubic-bezier(.4,0,.55,1)';
-        }, 650);
-        setTimeout(confetti, 200);
+          G('card').classList.add('show');
+        }, 500);
 
+        setTimeout(confetti, 800);
       });
 
       function confetti() {
