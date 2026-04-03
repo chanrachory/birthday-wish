@@ -236,6 +236,7 @@ button:hover {
     z-index: 200;
     background: linear-gradient(135deg, #fce4ec, #f8bbd0 50%, #fce4ec);
     flex-direction: column;
+    flex-wrap: nowrap;
     align-items: center;
     justify-content: center;
     overflow: hidden;
@@ -243,7 +244,19 @@ button:hover {
 }
 
 #overlay.on {
-    display: flex
+    display: flex !important
+}
+
+.ov-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    width: 100%;
+    max-height: 100vh;
+    overflow: hidden;
+    margin-top: -40px
 }
 
 .ov-close {
@@ -272,8 +285,8 @@ button:hover {
 
 /* Title collapses when hidden */
 .ov-title {
-    position: absolute;
-    top: 40%;
+    position: relative;
+    bottom: 0;
     font-family: 'Playfair Display', serif;
     font-style: italic;
     font-size: clamp(1.1rem, 4vw, 1.6rem);
@@ -283,9 +296,10 @@ button:hover {
     max-height: 60px;
     overflow: hidden;
     transition: max-height .3s, opacity .3s, margin .3s;
-    margin-bottom: 0px;
+    margin-bottom: 4px;
     z-index: 10;
-    animation: fdD .6s ease both
+    animation: fdD .6s ease both;
+    flex-shrink: 0
 }
 
 @keyframes fdD {
@@ -333,35 +347,35 @@ button:hover {
     }
 }
 
-/* ── Card: absolute in STAGE (not in wrapper!) ── */
 /* ── Card: absolute in STAGE ── */
 .card {
     position: absolute;
     left: 50%;
-    bottom: 10px; 
+    bottom: 10px;
     transform: translate(-50%, 0) scale(0.9);
     opacity: 0;
     width: 300px;
     height: 250px;
     background: #fff;
     border-radius: 14px;
-    z-index: 2; /* នៅពីក្រោយ flap ស្រោមសំបុត្រ */
+    z-index: 2;
+    /* នៅពីក្រោយ flap ស្រោមសំបុត្រ */
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 14px 16px 12px;
     box-shadow: 0 -6px 24px rgba(233, 30, 140, .15);
-    
-    /* កំណត់ Transition ឱ្យ Smooth */
-    transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), 
-                opacity 0.4s ease;
+    transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1),
+        opacity 0.4s ease;
 }
 
 /* បន្ថែម Class នេះតាមរយៈ JS ពេលចុច stage */
 .card.show {
     opacity: 1;
-    z-index: 20; /* ឱ្យវាឡើងមកនៅមុខគេបង្អស់ */
-    transform: translate(-50%, 19px) scale(1); /* ហោះឡើងលើ និងរីកទំហំ */
+    z-index: 20;
+    /* ឱ្យវាឡើងមកនៅមុខគេបង្អស់ */
+    transform: translate(-50%, 19px) scale(1);
+    /* ហោះឡើងលើ និងរីកទំហំ */
 }
 
 .card .ht {
@@ -472,7 +486,7 @@ button:hover {
 
 /* Hint */
 .hint {
-    margin-top: 20px;
+    margin-top: 8px;
     font-size: .8rem;
     color: #ad1457;
     letter-spacing: 1.5px;
@@ -481,7 +495,8 @@ button:hover {
     text-align: center;
     padding: 0 20px;
     transition: opacity .4s;
-    z-index: 10
+    z-index: 10;
+    flex-shrink: 0
 }
 
 @keyframes pulse {
