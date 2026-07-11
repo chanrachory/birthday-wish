@@ -1,0 +1,298 @@
+@import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;600&family=Playfair+Display:ital,wght@1,400;1,600&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Kantumruy Pro', sans-serif;
+    background: linear-gradient(135deg, #ffebf0 0%, #fce4ec 40%, #f8bbd0 70%, #f48fb1 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* ── Creator form ── */
+.container {
+    position: relative;
+    z-index: 10;
+    background: rgba(255, 255, 255, .88);
+    backdrop-filter: blur(16px);
+    padding: 32px;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: 0 20px 60px rgba(173, 20, 87, .12), 0 0 0 1px rgba(255, 255, 255, 0.4) inset;
+    border: 1px solid rgba(244, 143, 177, .25);
+    transition: transform 0.3s ease;
+}
+
+h2 {
+    text-align: center;
+    color: #ad1457;
+    margin-bottom: 24px;
+    font-size: 1.6rem;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    letter-spacing: 0.5px;
+}
+
+.field {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-size: .75rem;
+    color: #ad1457;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 12px;
+    border: 1.5px solid #f48fb1;
+    font-family: 'Kantumruy Pro', sans-serif;
+    font-size: .95rem;
+    outline: none;
+    transition: border .25s, box-shadow .25s, background .25s;
+    color: #4a1030;
+    background: rgba(255, 255, 255, .7);
+}
+
+input:focus,
+textarea:focus {
+    border-color: #e91e8c;
+    box-shadow: 0 0 0 4px rgba(233, 30, 140, .15);
+    background: rgba(255, 255, 255, .95);
+}
+
+textarea {
+    min-height: 120px;
+    resize: none;
+    line-height: 1.65;
+}
+
+.btn-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+button {
+    padding: 13px 16px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-family: 'Kantumruy Pro', sans-serif;
+    font-size: .95rem;
+    font-weight: 600;
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s, box-shadow 0.2s, filter 0.2s;
+}
+
+button:hover {
+    transform: translateY(-3px) scale(1.02);
+    filter: brightness(1.08);
+}
+
+button:active {
+    transform: translateY(-1px) scale(0.97);
+}
+
+.btn-save {
+    background: linear-gradient(135deg, #f48fb1, #e91e8c);
+    color: #fff;
+    flex: 1;
+    box-shadow: 0 4px 14px rgba(233, 30, 140, .25);
+}
+
+.btn-share {
+    background: linear-gradient(135deg, #ad1457, #e91e8c);
+    color: #fff;
+    flex: 1;
+    box-shadow: 0 4px 14px rgba(173, 20, 87, .25);
+}
+
+#share-box {
+    margin-top: 20px;
+    border-top: 1px solid rgba(244, 143, 177, .3);
+    padding-top: 18px;
+}
+
+.share-title {
+    font-size: .75rem;
+    color: #ad1457;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.telegram-tip {
+    background: linear-gradient(135deg, rgba(252, 228, 236, .9), rgba(248, 187, 208, .6));
+    border: 1.5px solid rgba(244, 143, 177, .4);
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+    font-size: .83rem;
+    line-height: 1.7;
+    color: #6d2040;
+}
+
+.telegram-tip strong {
+    color: #ad1457;
+}
+
+.step {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.num {
+    background: #e91e8c;
+    color: #fff;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .7rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.btn-dl {
+    background: linear-gradient(135deg, #e91e8c, #ad1457);
+    color: #fff;
+    width: 100%;
+    box-shadow: 0 4px 14px rgba(173, 20, 87, .25);
+    font-size: 1rem;
+    padding: 14px;
+}
+
+.btn-pv {
+    background: rgba(252, 228, 236, .8);
+    color: #ad1457;
+    border: 1.5px solid rgba(244, 143, 177, .4);
+    width: 100%;
+    margin-top: 8px;
+}
+
+.toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: #ad1457;
+    color: #fff;
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-size: .9rem;
+    z-index: 9999;
+    box-shadow: 0 8px 24px rgba(173, 20, 87, .25);
+    transition: transform 0.4s cubic-bezier(.34, 1.56, .64, 1), opacity 0.4s;
+    pointer-events: none;
+    white-space: nowrap;
+    opacity: 0;
+}
+
+.toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+/* ── Overlay ── */
+#overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: linear-gradient(135deg, #fce4ec, #f8bbd0 50%, #fce4ec);
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    gap: 0;
+}
+
+#overlay.on {
+    display: flex !important;
+}
+
+.ov-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    width: 100%;
+    max-height: 100vh;
+    overflow: hidden;
+    margin-top: -40px;
+}
+
+.ov-close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    background: rgba(255, 255, 255, .88);
+    border: 1.5px solid rgba(244, 143, 177, .5);
+    color: #ad1457;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .2s;
+    z-index: 20;
+}
+
+.ov-close:hover {
+    transform: scale(1.12);
+    background: #fff;
+}
+
+.ov-title {
+    position: relative;
+    bottom: 0;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(1.1rem, 4vw, 1.6rem);
+    color: #ad1457;
+    text-align: center;
+    padding: 0 20px;
+    max-height: 60px;
+    overflow: hidden;
+    transition: max-height .3s, opacity .3s, margin .3s;
+    margin-bottom: 4px;
+    z-index: 10;
+    animation: fdD .6s ease both;
+    flex-shrink: 0;
+}
+
+.ov-title.gone {
+    opacity: 0;
+    max-height: 0;
+    margin-bottom: 0;
+    pointer-events: none;
+}
